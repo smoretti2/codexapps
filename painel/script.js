@@ -229,7 +229,7 @@ async function index() {
     const isLogged = await fetchGet('https://codexapps.squareweb.app/api/check/token?token=' + (localStorage.getItem('token') || ''))
     if (!isLogged?.success) {
         console.log(isLogged)
-        // window.location.href = 'login'
+        window.location.href = 'login'
         return
     }
     const email = String(isLogged.response.email)
