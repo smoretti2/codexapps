@@ -1,0 +1,141 @@
+@keyframes fade-left {
+    0% {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fade-right {
+    0% {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fade-top {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fade-bottom {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-left,
+.fade-right,
+.fade-top,
+.fade-bottom {
+    opacity: 0;
+}
+
+
+.fade-in {
+    opacity: 1;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+.fade-in.fade-left {
+    animation-name: fade-left;
+}
+
+.fade-in.fade-right {
+    animation-name: fade-right;
+}
+
+.fade-in.fade-top {
+    animation-name: fade-top;
+}
+
+.fade-in.fade-bottom {
+    animation-name: fade-bottom;
+}
+
+.fade-in.fade-left.reverse {
+    animation-name: fade-left-reverse;
+}
+
+.fade-in.fade-right.reverse {
+    animation-name: fade-right-reverse;
+}
+
+.fade-in.fade-top.reverse {
+    animation-name: fade-top-reverse;
+}
+
+.fade-in.fade-bottom.reverse {
+    animation-name: fade-bottom-reverse;
+}
+
+@keyframes fade-left-reverse {
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+}
+
+@keyframes fade-right-reverse {
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+}
+
+@keyframes fade-top-reverse {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes fade-bottom-reverse {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+}
