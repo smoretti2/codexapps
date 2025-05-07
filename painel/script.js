@@ -1,7 +1,9 @@
-const tokenPreSetado = new URLSearchParams(window.location.search).get('token')
-if (tokenPreSetado) {
-    localStorage.setItem('token', tokenPreSetado)
-    window.history.replaceState({}, '', window.location.pathname)
+const urlParams = new URLSearchParams(window.location.search)
+const token = urlParams.get('token')
+if (token) {
+    localStorage.setItem('token', token)
+    urlParams.delete('token')
+    window.history.replaceState({}, '', `${window.location.pathname}?${urlParams.toString()}`)
 }
 
 function query(selector) { return document.querySelector(selector) }
@@ -367,6 +369,25 @@ async function index() {
                                         ]
                                     }
                                 )
+
+                                const urlParams = new URLSearchParams(window.location.search)
+                                const renovar = urlParams.get('renovar')
+                                if (renovar) {
+                                    if (renovar == v.applicationId) {
+                                        urlParams.delete('renovar')
+                                        window.history.replaceState({}, '', `${window.location.pathname}?${urlParams.toString()}`)
+                                        gerarSelecaoPeriodo(AplicacoesInfos[v.applicationId].valor, AplicacoesInfos[v.applicationId].tipo, async (vezes, total) => {
+
+                                            const resp = await fetchGet(`https://codexapps.squareweb.app/api/renovar?token=${localStorage.getItem('token')}&serverId=${v.applicationId}&vezes=${vezes}`)
+
+                                            if (resp.success) {
+                                                gerarPagamento(resp.response.base_64, resp.response.copia_cola)
+                                            } else {
+                                                Notificar(resp.message, 3)
+                                            }
+                                        })
+                                    }
+                                }
                             }
                         }
                     }
