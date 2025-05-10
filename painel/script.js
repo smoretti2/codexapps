@@ -327,6 +327,7 @@ async function index() {
                 }
             }
             if (data?.event == 'status') {
+                let mensalidade_atual = 0
                 for (const v of data.response) {
                     for (card of document.querySelectorAll('.aplicacao')) {
                         if (card.getAttribute('alt') == v.applicationId) {
@@ -391,7 +392,10 @@ async function index() {
                             }
                         }
                     }
+                    mensalidade_atual += AplicacoesInfos[v.applicationId].valor
                 }
+
+                document.querySelector(".mensalidadeatual").textContent = `Mensalidade Atual: R$ ${mensalidade_atual.toFixed(2).replace('.', ',')}`
             }
         } catch {
 
